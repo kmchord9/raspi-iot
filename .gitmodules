@@ -1,0 +1,6 @@
+[submodule "node/vue-chartjs"]
+	path = node/vue-chartjs
+	url = https://github.com/kmchord9/vue-chartjs.git
+[submodule "python/django-api-server"]
+	path = python/django-api-server
+	url = https://github.com/kmchord9/django-api-server.git

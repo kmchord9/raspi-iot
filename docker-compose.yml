@@ -1,0 +1,23 @@
+version: '3'
+
+services: 
+  apache:
+    image: httpd
+    volumes:
+      - ./node/vue-chartjs/dist:/usr/local/apache2/htdocs
+    ports:
+      - "8000:80"
+    container_name: apache
+
+  django:
+    build: ./python
+    command:>
+      bash -c 'python setup.py
+      && python runserver 0.0.0.0:3000'
+    volumes:
+      - .python/django-api-server:/work/django-api-server
+    ports: 
+      - "3000:3000"
+
+
+
