@@ -8,16 +8,16 @@ DJANGO_SETTING_MODULE=DJANGO_SETTING_MODULE
 
 #pip install
 if [ -e requirements.txt ]; then
-  pip install -r requirements.txt
+  pip install -r ../setup/requirements.txt
 else
   echo "requirements.txt not found"
 fi
 
 
-if [ ! -e db.sqlite3 ]; then
-  if [ -d ../django-api-server ]; then
-    cd ../django-api-server
+if [ ! -e ../django-api-server/db.sqlite3 ]; then
+  if [ -e ../django-api-server/manage.py ]; then
     #init BD
+    cd ../django-api-server/
     python manage.py makemigrations && \
     python manage.py migrate
     #create database user
@@ -32,7 +32,7 @@ if [ ! -e db.sqlite3 ]; then
         email='$DJANGO_SU_EMAIL', \
         password='$DJANGO_SU_PASSWORD')"
   else
-    echo "django-api-server not found"
+    echo "manage.py not found"
   fi
 else
   echo "db.sqlite3 found"

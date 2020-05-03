@@ -18,10 +18,10 @@ RUN mkdir -p work && \
 #    git clone https://github.com/kmchord9/django-api-server.git
 
 
-#COPY setup/ /work/setup/
+COPY setup/ /work/setup/
 #COPY django-api-server/ /work/django-api-server 
 
-WORKDIR /work/django-api-server
+#WORKDIR /work/django-api-server
 
 #RUN pip install -r requirements.txt
 
@@ -39,7 +39,7 @@ WORKDIR /work/django-api-server
 #        username='$DJANGO_SU_NAME', \
 #        email='$DJANGO_SU_EMAIL', \
 #        password='$DJANGO_SU_PASSWORD')"
-
+ENTRYPOINT [ "sh", "+x", "/work/setup/entrypoint2.sh" ]
 #サーバー起動
-CMD [ "python", "manage.py", "runserver", "0.0.0.0:3000" ]
-#CMD [ "python", "-m", "http.server", "3000" ]
+#CMD [ "python", "manage.py", "runserver", "0.0.0.0:3000" ]
+CMD [ "python", "-m", "http.server", "3000" ]

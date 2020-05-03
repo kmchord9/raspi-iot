@@ -12,9 +12,10 @@ services:
   django:
     build: ./python
     volumes: 
-      - python/django-api-server:/work/django-api-server
-    endpoint: ["sh", "endpoint.sh"]
-    command: python manage.py runserver 0.0.0.0:3000
+      - ./python/django-api-server:/work/django-api-server
+    entrypoint: ["sh", "/work/setup/entrypoint.sh"]
+    #command: python manage.py runserver 0.0.0.0:3000
+    #command: python -m http.server 3000
     ports: 
       - "3000:3000"
 
