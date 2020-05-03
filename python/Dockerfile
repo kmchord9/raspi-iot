@@ -17,8 +17,11 @@ RUN mkdir -p work && \
     cd work
 #    git clone https://github.com/kmchord9/django-api-server.git
 
+
+#COPY setup/ /work/setup/
+#COPY django-api-server/ /work/django-api-server 
+
 WORKDIR /work/django-api-server
-#COPY data/ /work/data/
 
 #RUN pip install -r requirements.txt
 
@@ -39,3 +42,4 @@ WORKDIR /work/django-api-server
 
 #サーバー起動
 CMD [ "python", "manage.py", "runserver", "0.0.0.0:3000" ]
+#CMD [ "python", "-m", "http.server", "3000" ]

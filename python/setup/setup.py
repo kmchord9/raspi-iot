@@ -1,10 +1,11 @@
- -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
+
 import os
 import sys
 import subprocess
 
 #ライブラリインストール
-subprocess.run(["pip", "install", "-r", "requirements.txt"])
+#subprocess.run(["pip", "install", "-r", "requirements.txt"])
 
 import django
 
@@ -15,8 +16,8 @@ DJANGO_SU_PASSWORD="mypass"
 DJANGO_SETTING_MODULE="DJANGO_SETTING_MODULE"
 
 #データベースのセットアップ
-subprocess.run(["python", "manage.py", "makemigrations"])
-subprocess.run(["python", "manage.py", "migrate"])
+subprocess.run(["python", "/work/django-api-server/manage.py", "makemigrations"])
+subprocess.run(["python", "/work/django-api-server/manage.py", "migrate"])
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')  
 django.setup() 
 
